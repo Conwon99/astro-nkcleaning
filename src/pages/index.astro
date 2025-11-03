@@ -1,0 +1,31 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navigation from '@/components/Navigation';
+import Hero from '@/components/Hero';
+import TrustBar from '@/components/TrustBar';
+import AboutUs from '@/components/AboutUs';
+import ServicesGrid from '@/components/ServicesGrid';
+import RegulatedEnvironments from '@/components/RegulatedEnvironments';
+import OurProcess from '@/components/OurProcess';
+import Slideshow from '@/components/Slideshow';
+import Reviews from '@/components/Reviews';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+---
+
+<Layout>
+  <main class="min-h-screen bg-background text-foreground">
+    <Navigation client:load />
+    <Hero client:load />
+    <TrustBar />
+    <AboutUs client:load />
+    <ServicesGrid client:load />
+    <RegulatedEnvironments client:load />
+    <OurProcess />
+    <Slideshow client:load />
+    <Reviews />
+    <ContactSection client:load />
+    <Footer client:load />
+  </main>
+</Layout>
+
