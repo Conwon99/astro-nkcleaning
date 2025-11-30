@@ -11,10 +11,13 @@ export interface Props {
 const {
   title = "NK Domestic & Commercial Cleaning LTD - Professional Cleaning Services in Kilmarnock",
   description = "NK Cleaning in Kilmarnock—domestic, commercial, regulated environments (care homes, schools, medical), biohazard, carpet, oven & caravan cleans. Compliance-trained professionals. Get a free quote.",
-  canonical = "https://nkcleaning.co.uk",
-  image = "https://nkcleaning.co.uk/og-image.jpg"
+  canonical,
+  image = "https://nkdomesticandcommercialcleaning.com/og-image.jpg"
 } = Astro.props;
 
+// Generate canonical URL from current page if not provided
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalUrl = canonical || `https://nkdomesticandcommercialcleaning.com${path === '/' ? '' : path}`;
 const fullTitle = title.includes('NK') ? title : `${title} | NK Cleaning`;
 ---
 
@@ -34,20 +37,20 @@ const fullTitle = title.includes('NK') ? title : `${title} | NK Cleaning`;
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={canonicalUrl} />
   </head>
   <body>
     <slot />
